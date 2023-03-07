@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class MemberWriteService {
+public class MemberWriterService {
 
     private final MemberRepository memberRepository;
-
 
     public Member register(RegisterMemberCommand command) {
         /* 목표 - 회원정보 등록하기(이메일, 생년월일)

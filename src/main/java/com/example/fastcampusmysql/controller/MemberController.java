@@ -4,7 +4,7 @@ package com.example.fastcampusmysql.controller;
 import com.example.fastcampusmysql.domain.dto.MemberDto;
 import com.example.fastcampusmysql.domain.dto.RegisterMemberCommand;
 import com.example.fastcampusmysql.domain.service.MemberReaderService;
-import com.example.fastcampusmysql.domain.service.MemberWriteService;
+import com.example.fastcampusmysql.domain.service.MemberWriterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MemberController {
 
-    final private MemberWriteService memberWriteService;
+    final private MemberWriterService memberWriteService;
     final private MemberReaderService memberReaderService;
 
     @PostMapping("/members")
