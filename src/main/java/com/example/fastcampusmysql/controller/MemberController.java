@@ -1,23 +1,29 @@
 package com.example.fastcampusmysql.controller;
 
 
+import com.example.fastcampusmysql.domain.dto.MemberDto;
 import com.example.fastcampusmysql.domain.dto.RegisterMemberCommand;
-import com.example.fastcampusmysql.domain.entity.Member;
+import com.example.fastcampusmysql.domain.service.MemberReaderService;
 import com.example.fastcampusmysql.domain.service.MemberWriteService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
 public class MemberController {
 
     final private MemberWriteService memberWriteService;
+    final private MemberReaderService memberReaderService;
 
     @PostMapping("/members")
-    public Member register(@RequestBody RegisterMemberCommand command) {
-        return memberWriteService.create(command);
+    public MemberDto register(@RequestBody RegisterMemberCommand command) {
+        var member = memberWriteService.register(command);
+        return memberReaderService.toDto(member);
+    }
+
+    @GetMapping("/members/{id}")
+    public MemberDto getMember(@PathVariable Long id) {
+        return memberReaderService.getMember(id);
     }
 
 }
