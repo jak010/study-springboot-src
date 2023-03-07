@@ -10,11 +10,9 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Locale;
 import java.util.Optional;
 
 @RequiredArgsConstructor

@@ -34,10 +34,18 @@ public class Member {
 
     }
 
-
-    void validateNickname(String nickname) {
-        Assert.isTrue(nickname.length() <= NAME_MAX_LIMIT, "최대 길이를 초과했습니다.");
-
+    public void changeNickName(String to) {
+        Objects.requireNonNull(to);
+        validateNickname(to);
+        nickname = to;
     }
+
+    private void validateNickname(String nickname) {
+        Assert.isTrue(
+                nickname.length() <= NAME_MAX_LIMIT,
+                "최대 길이를 초과했습니다."
+        );
+    }
+
 
 }
