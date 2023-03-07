@@ -11,13 +11,10 @@ import java.util.Objects;
 @Getter
 public class Member {
     final private Long id;
-
     private String nickname;
     final private String email;
     final private LocalDate birthday;
-
     final private LocalDateTime createdAt;
-
     final private static Long NAME_MAX_LIMIT = 10L;
 
     @Builder
@@ -28,10 +25,7 @@ public class Member {
 
         validateNickname(nickname);
         this.nickname = Objects.requireNonNull(nickname);
-
         this.createdAt = createdAt == null ? LocalDateTime.now() : createdAt;
-
-
     }
 
     public void changeNickName(String to) {

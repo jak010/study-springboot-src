@@ -2,6 +2,7 @@ package com.example.fastcampusmysql.domain.repository;
 
 import com.example.fastcampusmysql.domain.entity.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -72,7 +73,16 @@ public class MemberRepository {
     }
 
     public Member update(Member member) {
-        // TODO: implementd
+        var sql = String.format(
+                "UPDATE %s SET email = :email," +
+                        " nickname= :nickname," +
+                        " birthday= :birthday" +
+                        " WHERE id =:id",
+                TABLE
+        );
+
+        SqlParameterSource params = new BeanPropertySqlParameterSource(member);
+        namedParameterJdbcTemplate.update(sql, params);
         return member;
     }
 }
